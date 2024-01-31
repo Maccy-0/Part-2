@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Plane: {fileID: 4887293074997974154, guid: e83ad3f04d79ae146a6d433ce3dbb314, type: 3}
---- !u!1001 &998665705702978121
+--- !u!1001 &1667192305
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -308,6 +308,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4096316798800765889, guid: e83ad3f04d79ae146a6d433ce3dbb314, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096316798800765889, guid: e83ad3f04d79ae146a6d433ce3dbb314, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4887293074997974154, guid: e83ad3f04d79ae146a6d433ce3dbb314, type: 3}
       propertyPath: m_Name
       value: Plane
@@ -322,5 +330,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 998665705702978121}
   - {fileID: 759592597}
+  - {fileID: 1667192305}

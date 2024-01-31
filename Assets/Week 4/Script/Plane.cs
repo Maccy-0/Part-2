@@ -22,6 +22,7 @@ public class Plane : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 360));
         Speed = Random.Range(1, 3);
         spriteRenderer.sprite = Planes[Random.Range(0, 3)];
+        spriteRenderer.color = new Color(255, 255, 255);
 
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 1;
@@ -94,5 +95,10 @@ public class Plane : MonoBehaviour
         }
 
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        spriteRenderer.color = new Color(255, 0, 0);
     }
 }

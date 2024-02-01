@@ -71,6 +71,12 @@ public class Plane : MonoBehaviour
                 lineRenderer.positionCount--;
             }
         }
+
+        if (transform.position.y > 6 | transform.position.y < -6 | transform.position.x > 13 | transform.position.x < -13)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     void OnMouseDown()
@@ -97,8 +103,17 @@ public class Plane : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         spriteRenderer.color = new Color(255, 0, 0);
+        if (Vector3.Distance(collision.transform.position, transform.position) < 1.5)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        spriteRenderer.color = new Color(255, 255, 255);
     }
 }

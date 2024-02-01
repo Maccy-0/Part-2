@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Plane : MonoBehaviour
 {
@@ -15,9 +16,13 @@ public class Plane : MonoBehaviour
     float landingTimer;
     public SpriteRenderer spriteRenderer;
     public Sprite[] Planes;
+    bool landing;
+    public float Score;
 
     void Start()
     {
+        Score = 0;
+        landing = false;
         transform.position = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
         transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 360));
         Speed = Random.Range(1, 3);
@@ -45,15 +50,20 @@ public class Plane : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Physics2D.OverlapPoint(new Vector2(7, -2)))
+        {
+            landing = true;
+        }
+        if (landing == true)
         {
             landingTimer += 0.1f * Time.deltaTime;
             float interpolation = Landing.Evaluate(landingTimer);
-            if(transform.localScale.z < 0.1f)
+            if(transform.localScale.z > 0.9f)
             {
                 Destroy(gameObject);
             }
             transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, interpolation);
+            Score += 1;
         }
 
         lineRenderer.SetPosition(0, transform.position);
@@ -76,6 +86,7 @@ public class Plane : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
 
     }
 

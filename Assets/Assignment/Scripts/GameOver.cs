@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
@@ -11,6 +12,6 @@ public class GameOver : MonoBehaviour
 
     public void EndGame()
     {
-        //Load next scene
+        SceneManager.LoadScene(4);
     }
 }

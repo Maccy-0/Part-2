@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Week 5/Scenes/Week 5.unity
     guid: 91ffde968e7d9354f9478a28af1a1f5c
+  - enabled: 1
+    path: Assets/Assignment/Scenes/Main Game View.unity
+    guid: 3e24e84317d685448b3ea4fbe63cde29
+  - enabled: 1
+    path: Assets/Assignment/Scenes/MainMenu.unity
+    guid: 01aa245ddb518f744be48089ec32f35f
   m_configObjects: {}

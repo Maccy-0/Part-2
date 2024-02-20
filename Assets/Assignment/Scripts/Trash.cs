@@ -13,6 +13,9 @@ public class Trash : MonoBehaviour
     public AnimationCurve Acceleration;
     public float speed;
     float time;
+    bool falling;
+    Vector2 mouse;
+    Vector2 follow;
 
     // Start is called before the first frame update
     void Start()
@@ -21,21 +24,49 @@ public class Trash : MonoBehaviour
         time = 0;
         animator = GetComponent<Animator>();
         Rad = Random.Range(1, 5);
-        Debug.Log(Rad);
         animator.SetInteger("Rad_Trash", Rad);
+        falling = true;
+        
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        time += Time.deltaTime;
+        
 
         float weight = Acceleration.Evaluate(time * 0.1f);
+        if (falling == true)
+        {
+            time += Time.deltaTime;
+            transform.position = new Vector2(transform.position.x, transform.position.y + -speed * Time.deltaTime * weight);
+        }
+        else
+        {
+            mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            follow = mouse - (Vector2)transform.position;
+            rb.MovePosition(rb.position + follow.normalized * 8 * Time.deltaTime);
+
+        }
         
-        transform.position = new Vector2(transform.position.x, transform.position.y + -speed * Time.deltaTime * weight);
         if (transform.position.y < -6) 
         {
             Destroy(gameObject);
+            
         }
+    }
+
+    private void OnMouseDown()
+    {
+        falling = false;
+    }
+
+    private void OnMouseUp()
+    {
+        falling = true;
+    }
+
+    public void byebye()
+    {
+        Destroy(gameObject);
     }
 }

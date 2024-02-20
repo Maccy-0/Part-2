@@ -9,14 +9,13 @@ public class TrashMaker : MonoBehaviour
     public GameObject Trash;
     float time;
     float timer;
-    float rampUp;
     // Start is called before the first frame update
     void Start()
     {
         Instantiate(Trash);
         Instantiate(Trash);
         time = 0;
-        timer = 2;//Change to 4
+        timer = 4;
     }
 
     // Update is called once per frame

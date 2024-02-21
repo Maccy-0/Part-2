@@ -7,11 +7,13 @@ using UnityEngine;
 public class FootPlayer : MonoBehaviour
 {
     public SpriteRenderer sr;
-
+    Rigidbody2D rb;
+    public float speed = 100;
     // Start is called before the first frame update
     void Start()
     {
         Selected(false);
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class FootPlayer : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Selected(true);
+        Controller.SerCurrentSelection(this);
     }
 
     public void Selected(bool clicked)
@@ -35,5 +37,10 @@ public class FootPlayer : MonoBehaviour
         {
             sr.color = new Color(1, 1, 0);
         }
+    }
+
+    public void Move(Vector2 direction)
+    {
+        rb.AddForce(direction * speed, ForceMode2D.Impulse);
     }
 }

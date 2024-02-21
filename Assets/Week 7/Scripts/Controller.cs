@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using TMPro;
 
 public class Controller : MonoBehaviour
 {
@@ -12,7 +14,13 @@ public class Controller : MonoBehaviour
     Vector2 direction;
 
     public static FootPlayer CurrentSelection{ get; private set; }
+    public static float Score;
+    public TextMeshProUGUI ScoreText;
 
+    private void Start()
+    {
+        Score = 0;
+    }
     public static void SerCurrentSelection(FootPlayer player)
     {
         if(CurrentSelection != null)
@@ -30,6 +38,7 @@ public class Controller : MonoBehaviour
             CurrentSelection.Move(direction);
             direction = Vector2.zero;
         }
+        ScoreText.text = "Score:" + Score;
     }
     private void Update()
     {

@@ -12,6 +12,7 @@ public class GoalkeeperController : MonoBehaviour
     public Vector2 goalpoint;
     Vector2 placeholder;
     Vector2 target = new Vector2(0,0);
+    float speed = 5;
     
     // Start is called before the first frame update
     void Start()
@@ -22,10 +23,8 @@ public class GoalkeeperController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Vector2.MoveTowards(goalKeeper.position, target, 0);
-        Vector2.MoveTowards(goalKeeper.position, Vector2.zero, 1);
-        Debug.Log(goalKeeper.position);
-        
+        goalKeeper.position = Vector2.MoveTowards(goalKeeper.position, target, speed*Time.deltaTime);
+
         placeholder = (Vector2)Controller.CurrentSelection.transform.position / Controller.CurrentSelection.transform.position.normalized;
         if (placeholder.x>4)
         {
